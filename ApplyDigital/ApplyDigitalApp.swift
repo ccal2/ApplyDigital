@@ -11,7 +11,8 @@ import SwiftUI
 struct ApplyDigitalApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            StoryFeedView()
+                .environment(StoryFeedViewModel())
         }
     }
 }
