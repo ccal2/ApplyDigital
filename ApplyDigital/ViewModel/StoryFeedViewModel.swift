@@ -20,15 +20,30 @@ class StoryFeedViewModel {
 
     // MARK: - Methods
 
-    func fetchData() async {
+    func fetchData(refreshing: Bool = false) async {
         isFetchingData = true
+
+        if refreshing {
+            error = nil
+        }
+
         let endpoint = AlgoliaEndpoint.latestStories()
 
         do {
             let searchResult: StoriesSearchResult = try await AlgoliaService.fetchData(from: endpoint)
-            data = searchResult.stories
+            if refreshing {
+                data = searchResult.stories
+            } else {
+                data.append(contentsOf: searchResult.stories)
+            }
+
+            error = nil
         } catch {
             self.error = error
+
+            if refreshing {
+                data = []
+            }
         }
 
         isFetchingData = false

@@ -44,6 +44,12 @@ struct StoryFeedView: View {
                                     Text("Error: \"\(error.localizedDescription)\"")
                                         .font(.footnote)
                                 }
+                                Button("Try again") {
+                                    Task {
+                                        await viewModel.fetchData(refreshing: true)
+                                    }
+                                }
+                                .buttonStyle(.borderedProminent)
                             }
                             .padding()
                         } else {
@@ -52,6 +58,10 @@ struct StoryFeedView: View {
                         }
                     }
                 }
+            }
+            .refreshable {
+                // TODO: See if I should use Task here
+                await viewModel.fetchData(refreshing: true)
             }
         }
         .task {
