@@ -13,8 +13,7 @@ class StoryFeedViewModel {
 
     // MARK: - Properties
 
-    private(set) var isFetchingData = false
-
+    fileprivate(set) var isFetchingData = false
     fileprivate(set) var data: [Story] = []
     fileprivate(set) var error: Error?
 
@@ -44,6 +43,30 @@ class StoryFeedViewModel {
             if refreshing {
                 data = []
             }
+        }
+
+        isFetchingData = false
+    }
+
+}
+
+class MockedStoryFeedViewModel: StoryFeedViewModel {
+
+    var fileName: String
+
+    init(fileName: String = "mocked_stories.json") {
+        self.fileName = fileName
+        super.init()
+    }
+
+    override func fetchData(refreshing: Bool = false) async {
+        isFetchingData = true
+
+        do {
+            let searchResult: StoriesSearchResult = try parseJSON(from: fileName)
+            data = searchResult.stories
+        } catch {
+            self.error = error
         }
 
         isFetchingData = false

@@ -53,8 +53,17 @@ struct StoryFeedView: View {
                             }
                             .padding()
                         } else {
-                            Text("No stories yet")
-                                .backgroundStyle(Color.red)
+                            VStack(spacing: 16) {
+                                Text("No stories yet")
+                                    .backgroundStyle(Color.red)
+                                Button("Try to fetch") {
+                                    Task {
+                                        await viewModel.fetchData(refreshing: true)
+                                    }
+                                }
+                                .buttonStyle(.borderedProminent)
+                            }
+                            .padding()
                         }
                     }
                 }
@@ -91,9 +100,19 @@ struct StoryFeedView: View {
 
 }
 
-// MARK: - Preview
+// MARK: - Previews
 
-#Preview {
+#Preview("Valid data") {
     StoryFeedView()
-        .environment(StoryFeedViewModel())
+        .environment(MockedStoryFeedViewModel() as StoryFeedViewModel)
+}
+
+#Preview("Empty") {
+    StoryFeedView()
+        .environment(MockedStoryFeedViewModel(fileName: "mocked_empty_stories.json") as StoryFeedViewModel)
+}
+
+#Preview("Error") {
+    StoryFeedView()
+        .environment(MockedStoryFeedViewModel(fileName: "invalid file name") as StoryFeedViewModel)
 }
