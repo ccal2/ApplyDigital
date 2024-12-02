@@ -8,7 +8,7 @@
 import Foundation
 
 struct Story: Identifiable, Codable {
-    let id: Int
+    let id: String
     let author: String?
     let createdAt: Date?
     let url: String?
@@ -22,7 +22,7 @@ struct Story: Identifiable, Codable {
 
     // swiftlint:disable identifier_name
     enum CodingKeys: String, CodingKey {
-        case id = "story_id"
+        case id = "objectID"
         case _title = "title"
         case _storyTitle = "story_title"
         case author
