@@ -27,7 +27,7 @@ struct StoryDTO: Identifiable, Codable {
         case _storyTitle = "story_title"
         case author
         case createdAt = "created_at"
-        case url
+        case url = "story_url"
     }
     // swiftlint:enable identifier_name
 
