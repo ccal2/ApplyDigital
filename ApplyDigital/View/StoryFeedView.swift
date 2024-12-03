@@ -30,14 +30,16 @@ struct StoryFeedView: View {
     // MARK: - Views
 
     var body: some View {
-        Group {
+        NavigationStack {
             List {
                 ForEach(stories) { story in
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text(story.title ?? "<untitled>")
-                            .font(.headline)
-                        Text(subHeadline(for: story))
-                            .font(.subheadline)
+                    NavigationLink(destination: destinationView(for: story)) {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text(story.title ?? "<untitled>")
+                                .font(.headline)
+                            Text(subHeadline(for: story))
+                                .font(.subheadline)
+                        }
                     }
                 }
                 .onDelete(perform: deleteStories)
@@ -110,6 +112,15 @@ struct StoryFeedView: View {
         for index in indexSet {
             stories[index].delete()
         }
+    }
+
+    private func destinationView(for story: Story) -> some View {
+        guard let url = story.url, let validURL = URL(string: url) else {
+            return Text("Could not load the story because the URL is invalid")
+                .padding()
+        }
+
+        return WebView(url: validURL)
     }
 
 }

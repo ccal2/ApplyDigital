@@ -15,6 +15,7 @@
 		7706F8502CFE15F90023D7EA /* mocked_stories.json in Resources */ = {isa = PBXBuildFile; fileRef = 7706F84F2CFE15F20023D7EA /* mocked_stories.json */; };
 		7706F8522CFE1AD10023D7EA /* mocked_empty_stories.json in Resources */ = {isa = PBXBuildFile; fileRef = 7706F8512CFE1AC80023D7EA /* mocked_empty_stories.json */; };
 		7706F8542CFE589E0023D7EA /* ModelContext+insertIfNotExisting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7706F8532CFE587F0023D7EA /* ModelContext+insertIfNotExisting.swift */; };
+		775EE9F82CFEA98B000E6A44 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 775EE9F72CFEA98A000E6A44 /* WebView.swift */; };
 		77CC28682CF8D61A007BC6FA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77CC285F2CF8D61A007BC6FA /* Preview Assets.xcassets */; };
 		77CC28692CF8D61A007BC6FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77CC28612CF8D61A007BC6FA /* Assets.xcassets */; };
 		77CC286A2CF8D61A007BC6FA /* StoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC285D2CF8D61A007BC6FA /* StoryDTO.swift */; };
@@ -51,6 +52,7 @@
 		7706F84F2CFE15F20023D7EA /* mocked_stories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mocked_stories.json; sourceTree = "<group>"; };
 		7706F8512CFE1AC80023D7EA /* mocked_empty_stories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mocked_empty_stories.json; sourceTree = "<group>"; };
 		7706F8532CFE587F0023D7EA /* ModelContext+insertIfNotExisting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModelContext+insertIfNotExisting.swift"; sourceTree = "<group>"; };
+		775EE9F72CFEA98A000E6A44 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		77CC282A2CF8CCC3007BC6FA /* ApplyDigital.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApplyDigital.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CC283A2CF8CCC7007BC6FA /* ApplyDigitalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApplyDigitalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CC28442CF8CCC7007BC6FA /* ApplyDigitalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApplyDigitalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				77CC28662CF8D61A007BC6FA /* StoryFeedView.swift */,
+				775EE9F72CFEA98A000E6A44 /* WebView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7706F8492CFE027A0023D7EA /* Story.swift in Sources */,
+				775EE9F82CFEA98B000E6A44 /* WebView.swift in Sources */,
 				7706F7B72CF9DCDC0023D7EA /* AlgoliaEndpoint.swift in Sources */,
 				7706F7B12CF9DC810023D7EA /* StoryFeedViewModel.swift in Sources */,
 				7706F8542CFE589E0023D7EA /* ModelContext+insertIfNotExisting.swift in Sources */,
