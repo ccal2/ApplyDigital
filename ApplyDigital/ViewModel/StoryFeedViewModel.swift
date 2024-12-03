@@ -29,7 +29,7 @@ class StoryFeedViewModel {
             let searchResult: StoriesSearchResultDTO = try await AlgoliaService.shared.fetchData(from: endpoint)
 
             if refreshing {
-                try context.delete(model: Story.self)
+                try context.delete(model: Story.self, where: #Predicate { element in !element.isDeleted })
                 try context.save()
             }
             searchResult.stories.forEach { dto in

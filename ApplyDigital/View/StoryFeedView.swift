@@ -12,7 +12,10 @@ struct StoryFeedView: View {
 
     // MARK: - Properties
 
-    @Query(sort: \Story.createdAt, order: .reverse) var stories: [Story]
+    @Query(filter: #Predicate { element in !element.isDeleted },
+           sort: \Story.createdAt,
+           order: .reverse)
+    var stories: [Story]
 
     @Environment(\.modelContext) var modelContext
     @Environment(StoryFeedViewModel.self) var viewModel
@@ -37,6 +40,7 @@ struct StoryFeedView: View {
                             .font(.subheadline)
                     }
                 }
+                .onDelete(perform: deleteStories)
             }
             .overlay {
                 if stories.isEmpty {
@@ -100,6 +104,12 @@ struct StoryFeedView: View {
         }
 
         return "Error: \"\(error.localizedDescription)\".\n"
+    }
+
+    private func deleteStories(_ indexSet: IndexSet) {
+        for index in indexSet {
+            stories[index].delete()
+        }
     }
 
 }
