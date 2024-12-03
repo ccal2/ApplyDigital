@@ -111,6 +111,7 @@ struct StoryFeedView: View {
     private func deleteStories(_ indexSet: IndexSet) {
         for index in indexSet {
             stories[index].delete()
+            try? modelContext.save()
         }
     }
 
