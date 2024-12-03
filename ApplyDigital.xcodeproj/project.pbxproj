@@ -10,12 +10,14 @@
 		7706F7B12CF9DC810023D7EA /* StoryFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7706F7B02CF9DC810023D7EA /* StoryFeedViewModel.swift */; };
 		7706F7B52CF9DCC20023D7EA /* AlgoliaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7706F7B42CF9DCC20023D7EA /* AlgoliaService.swift */; };
 		7706F7B72CF9DCDC0023D7EA /* AlgoliaEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7706F7B62CF9DCDC0023D7EA /* AlgoliaEndpoint.swift */; };
+		7706F8492CFE027A0023D7EA /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7706F8482CFE027A0023D7EA /* Story.swift */; };
 		7706F84D2CFE15000023D7EA /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7706F84C2CFE14FE0023D7EA /* Utils.swift */; };
 		7706F8502CFE15F90023D7EA /* mocked_stories.json in Resources */ = {isa = PBXBuildFile; fileRef = 7706F84F2CFE15F20023D7EA /* mocked_stories.json */; };
 		7706F8522CFE1AD10023D7EA /* mocked_empty_stories.json in Resources */ = {isa = PBXBuildFile; fileRef = 7706F8512CFE1AC80023D7EA /* mocked_empty_stories.json */; };
+		7706F8542CFE589E0023D7EA /* ModelContext+insertIfNotExisting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7706F8532CFE587F0023D7EA /* ModelContext+insertIfNotExisting.swift */; };
 		77CC28682CF8D61A007BC6FA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77CC285F2CF8D61A007BC6FA /* Preview Assets.xcassets */; };
 		77CC28692CF8D61A007BC6FA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 77CC28612CF8D61A007BC6FA /* Assets.xcassets */; };
-		77CC286A2CF8D61A007BC6FA /* Story.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC285D2CF8D61A007BC6FA /* Story.swift */; };
+		77CC286A2CF8D61A007BC6FA /* StoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC285D2CF8D61A007BC6FA /* StoryDTO.swift */; };
 		77CC286B2CF8D61A007BC6FA /* ApplyDigitalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC28652CF8D61A007BC6FA /* ApplyDigitalApp.swift */; };
 		77CC286C2CF8D61A007BC6FA /* StoryFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC28662CF8D61A007BC6FA /* StoryFeedView.swift */; };
 		77CC286F2CF8D623007BC6FA /* ApplyDigitalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC286D2CF8D623007BC6FA /* ApplyDigitalTests.swift */; };
@@ -44,13 +46,15 @@
 		7706F7B02CF9DC810023D7EA /* StoryFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryFeedViewModel.swift; sourceTree = "<group>"; };
 		7706F7B42CF9DCC20023D7EA /* AlgoliaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgoliaService.swift; sourceTree = "<group>"; };
 		7706F7B62CF9DCDC0023D7EA /* AlgoliaEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlgoliaEndpoint.swift; sourceTree = "<group>"; };
+		7706F8482CFE027A0023D7EA /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
 		7706F84C2CFE14FE0023D7EA /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		7706F84F2CFE15F20023D7EA /* mocked_stories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mocked_stories.json; sourceTree = "<group>"; };
 		7706F8512CFE1AC80023D7EA /* mocked_empty_stories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mocked_empty_stories.json; sourceTree = "<group>"; };
+		7706F8532CFE587F0023D7EA /* ModelContext+insertIfNotExisting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ModelContext+insertIfNotExisting.swift"; sourceTree = "<group>"; };
 		77CC282A2CF8CCC3007BC6FA /* ApplyDigital.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ApplyDigital.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CC283A2CF8CCC7007BC6FA /* ApplyDigitalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApplyDigitalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		77CC28442CF8CCC7007BC6FA /* ApplyDigitalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApplyDigitalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		77CC285D2CF8D61A007BC6FA /* Story.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Story.swift; sourceTree = "<group>"; };
+		77CC285D2CF8D61A007BC6FA /* StoryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryDTO.swift; sourceTree = "<group>"; };
 		77CC285F2CF8D61A007BC6FA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		77CC28612CF8D61A007BC6FA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		77CC28652CF8D61A007BC6FA /* ApplyDigitalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyDigitalApp.swift; sourceTree = "<group>"; };
@@ -126,7 +130,8 @@
 		77CC285E2CF8D61A007BC6FA /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				77CC285D2CF8D61A007BC6FA /* Story.swift */,
+				7706F8482CFE027A0023D7EA /* Story.swift */,
+				77CC285D2CF8D61A007BC6FA /* StoryDTO.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 		77CC28672CF8D61A007BC6FA /* ApplyDigital */ = {
 			isa = PBXGroup;
 			children = (
+				7706F8532CFE587F0023D7EA /* ModelContext+insertIfNotExisting.swift */,
 				77CC28652CF8D61A007BC6FA /* ApplyDigitalApp.swift */,
 				7706F84C2CFE14FE0023D7EA /* Utils.swift */,
 				77CC285E2CF8D61A007BC6FA /* Model */,
@@ -358,9 +364,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7706F8492CFE027A0023D7EA /* Story.swift in Sources */,
 				7706F7B72CF9DCDC0023D7EA /* AlgoliaEndpoint.swift in Sources */,
 				7706F7B12CF9DC810023D7EA /* StoryFeedViewModel.swift in Sources */,
-				77CC286A2CF8D61A007BC6FA /* Story.swift in Sources */,
+				7706F8542CFE589E0023D7EA /* ModelContext+insertIfNotExisting.swift in Sources */,
+				77CC286A2CF8D61A007BC6FA /* StoryDTO.swift in Sources */,
 				7706F7B52CF9DCC20023D7EA /* AlgoliaService.swift in Sources */,
 				77CC286B2CF8D61A007BC6FA /* ApplyDigitalApp.swift in Sources */,
 				77CC286C2CF8D61A007BC6FA /* StoryFeedView.swift in Sources */,

@@ -5,6 +5,7 @@
 //  Created by Carolina Lopes on 29/11/24.
 //
 
+import SwiftData
 import SwiftUI
 
 @MainActor
@@ -14,38 +15,35 @@ class StoryFeedViewModel {
     // MARK: - Properties
 
     fileprivate(set) var isFetchingData = false
-    fileprivate(set) var data: [Story] = []
     fileprivate(set) var error: Error?
 
     // MARK: - Methods
 
-    func fetchData(refreshing: Bool = false) async {
+    @MainActor
+    func fetchData(context: ModelContext, refreshing: Bool = false) async {
         isFetchingData = true
-
-        if refreshing {
-            error = nil
-        }
 
         let endpoint = AlgoliaEndpoint.latestStories()
 
         do {
-            let searchResult: StoriesSearchResult = try await AlgoliaService.fetchData(from: endpoint)
-            if refreshing {
-                data = searchResult.stories
-            } else {
-                data.append(contentsOf: searchResult.stories)
-            }
+            let searchResult: StoriesSearchResultDTO = try await AlgoliaService.shared.fetchData(from: endpoint)
 
-            error = nil
+            if refreshing {
+                try context.delete(model: Story.self)
+                try context.save()
+            }
+            searchResult.stories.forEach { dto in
+                context.insertIfNotExisting(Story(from: dto))
+            }
         } catch {
             self.error = error
-
-            if refreshing {
-                data = []
-            }
         }
 
         isFetchingData = false
+    }
+
+    func clearError() {
+        error = nil
     }
 
 }
@@ -59,12 +57,15 @@ class MockedStoryFeedViewModel: StoryFeedViewModel {
         super.init()
     }
 
-    override func fetchData(refreshing: Bool = false) async {
+    @MainActor
+    override func fetchData(context: ModelContext, refreshing: Bool = false) async {
         isFetchingData = true
 
         do {
-            let searchResult: StoriesSearchResult = try parseJSON(from: fileName)
-            data = searchResult.stories
+            let searchResult: StoriesSearchResultDTO = try parseJSON(from: fileName)
+            searchResult.stories.forEach { dto in
+                context.insertIfNotExisting(Story(from: dto))
+            }
         } catch {
             self.error = error
         }

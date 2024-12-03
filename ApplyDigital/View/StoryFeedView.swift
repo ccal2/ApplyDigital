@@ -5,76 +5,72 @@
 //  Created by Carolina Lopes on 28/11/24.
 //
 
+import SwiftData
 import SwiftUI
 
 struct StoryFeedView: View {
 
     // MARK: - Properties
 
+    @Query(sort: \Story.createdAt, order: .reverse) var stories: [Story]
+
+    @Environment(\.modelContext) var modelContext
     @Environment(StoryFeedViewModel.self) var viewModel
+
+    private var showErrorAlert: Binding<Bool> {
+        Binding(
+            get: { viewModel.error != nil },
+            set: { if !$0 { viewModel.clearError() } }
+        )
+    }
 
     // MARK: - Views
 
     var body: some View {
         Group {
             List {
-                ForEach(viewModel.data) { story in
+                ForEach(stories) { story in
                     VStack(alignment: .leading, spacing: 10) {
                         Text(story.title ?? "<untitled>")
                             .font(.headline)
                         Text(subHeadline(for: story))
                             .font(.subheadline)
                     }
-
                 }
             }
             .overlay {
-                if viewModel.data.isEmpty {
+                if stories.isEmpty {
                     if viewModel.isFetchingData {
                         VStack {
                             ProgressView()
                             Text("Fetching stories…")
                         }
                     } else {
-                        if let error = viewModel.error {
-                            VStack(spacing: 16) {
-                                VStack(alignment: .leading) {
-                                    Text("Failed to fetch data.")
-                                        .font(.callout)
-                                    Text("Error: \"\(error.localizedDescription)\"")
-                                        .font(.footnote)
+                        VStack(spacing: 16) {
+                            Text("No stories yet")
+                                .backgroundStyle(Color.red)
+                            Button("Try to fetch") {
+                                Task {
+                                    await viewModel.fetchData(context: modelContext, refreshing: true)
                                 }
-                                Button("Try again") {
-                                    Task {
-                                        await viewModel.fetchData(refreshing: true)
-                                    }
-                                }
-                                .buttonStyle(.borderedProminent)
                             }
-                            .padding()
-                        } else {
-                            VStack(spacing: 16) {
-                                Text("No stories yet")
-                                    .backgroundStyle(Color.red)
-                                Button("Try to fetch") {
-                                    Task {
-                                        await viewModel.fetchData(refreshing: true)
-                                    }
-                                }
-                                .buttonStyle(.borderedProminent)
-                            }
-                            .padding()
+                            .buttonStyle(.borderedProminent)
                         }
+                        .padding()
                     }
                 }
             }
             .refreshable {
-                // TODO: See if I should use Task here
-                await viewModel.fetchData(refreshing: true)
+                await viewModel.fetchData(context: modelContext, refreshing: true)
             }
         }
+        .alert("Failed to fetch data", isPresented: showErrorAlert) {
+            Button("OK", role: .cancel) { }
+        } message: {
+            Text("Try again later.")
+        }
         .task {
-            await viewModel.fetchData()
+            await viewModel.fetchData(context: modelContext, refreshing: true)
         }
     }
 
@@ -98,21 +94,42 @@ struct StoryFeedView: View {
         return formatter.localizedString(for: date, relativeTo: Date.now)
     }
 
+    private func alertErrorMessage(for error: Error?) -> String {
+        guard let error else {
+            return ""
+        }
+
+        return "Error: \"\(error.localizedDescription)\".\n"
+    }
+
 }
 
 // MARK: - Previews
 
+@MainActor
+let previewContainer: ModelContainer = {
+    do {
+        return try ModelContainer(for: Story.self,
+                                  configurations: ModelConfiguration(isStoredInMemoryOnly: true))
+    } catch {
+        fatalError("Failed to create container.")
+    }
+}()
+
 #Preview("Valid data") {
     StoryFeedView()
+        .modelContainer(previewContainer)
         .environment(MockedStoryFeedViewModel() as StoryFeedViewModel)
 }
 
 #Preview("Empty") {
     StoryFeedView()
+        .modelContainer(previewContainer)
         .environment(MockedStoryFeedViewModel(fileName: "mocked_empty_stories.json") as StoryFeedViewModel)
 }
 
 #Preview("Error") {
     StoryFeedView()
+        .modelContainer(previewContainer)
         .environment(MockedStoryFeedViewModel(fileName: "invalid file name") as StoryFeedViewModel)
 }

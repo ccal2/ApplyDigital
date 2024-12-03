@@ -2,41 +2,34 @@
 //  Story.swift
 //  ApplyDigital
 //
-//  Created by Carolina Lopes on 28/11/24.
+//  Created by Carolina Lopes on 02/12/24.
 //
 
 import Foundation
+import SwiftData
 
-struct Story: Identifiable, Codable {
-    let id: String
-    let author: String?
-    let createdAt: Date?
-    let url: String?
+@Model
+class Story {
+    @Attribute(.unique) var id: String
+    var author: String?
+    var createdAt: Date?
+    var url: String?
+    var title: String?
 
-    var title: String? {
-        _title ?? _storyTitle
+    init(id: String, author: String? = nil, createdAt: Date? = nil, url: String? = nil, title: String? = nil) {
+        self.id = id
+        self.author = author
+        self.createdAt = createdAt
+        self.url = url
+        self.title = title
     }
 
-    private let _title: String?
-    private let _storyTitle: String?
-
-    // swiftlint:disable identifier_name
-    enum CodingKeys: String, CodingKey {
-        case id = "objectID"
-        case _title = "title"
-        case _storyTitle = "story_title"
-        case author
-        case createdAt = "created_at"
-        case url
+    convenience init(from dto: StoryDTO) {
+        self.init(id: dto.id,
+                  author: dto.author,
+                  createdAt: dto.createdAt,
+                  url: dto.url,
+                  title: dto.title)
     }
-    // swiftlint:enable identifier_name
 
-}
-
-struct StoriesSearchResult: Codable {
-    let stories: [Story]
-
-    enum CodingKeys: String, CodingKey {
-        case stories = "hits"
-    }
 }

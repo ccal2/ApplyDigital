@@ -16,7 +16,16 @@ enum FetchError: Error {
 
 class AlgoliaService {
 
-    static func fetchData<T: Decodable>(from endpoint: AlgoliaEndpoint) async throws -> T {
+    // MARK: - Properties
+
+    @MainActor
+    static let shared = AlgoliaService()
+
+    // MARK: - Methods
+
+    init() { }
+
+    func fetchData<T: Decodable>(from endpoint: AlgoliaEndpoint) async throws -> T {
         guard var url = URL(string: endpoint.urlString) else {
             throw FetchError.badURL
         }
