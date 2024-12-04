@@ -117,11 +117,13 @@ struct StoryFeedView: View {
 
     private func destinationView(for story: Story) -> some View {
         guard let url = story.url, let validURL = URL(string: url) else {
-            return Text("Could not load the story because the URL is invalid")
-                .padding()
+            return AnyView(
+                Text("Could not load the story because the URL is invalid")
+                    .padding()
+            )
         }
 
-        return WebView(url: validURL)
+        return AnyView(WebView(url: validURL))
     }
 
 }
