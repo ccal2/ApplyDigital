@@ -22,8 +22,6 @@
 		77CC286B2CF8D61A007BC6FA /* ApplyDigitalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC28652CF8D61A007BC6FA /* ApplyDigitalApp.swift */; };
 		77CC286C2CF8D61A007BC6FA /* StoryFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC28662CF8D61A007BC6FA /* StoryFeedView.swift */; };
 		77CC286F2CF8D623007BC6FA /* ApplyDigitalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC286D2CF8D623007BC6FA /* ApplyDigitalTests.swift */; };
-		77CC28732CF8D625007BC6FA /* ApplyDigitalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC28702CF8D625007BC6FA /* ApplyDigitalUITests.swift */; };
-		77CC28742CF8D625007BC6FA /* ApplyDigitalUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC28712CF8D625007BC6FA /* ApplyDigitalUITestsLaunchTests.swift */; };
 		77D2859F2D01207100E4E33D /* StoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D2859E2D01207100E4E33D /* StoryCellView.swift */; };
 		77D285A22D0122D700E4E33D /* MockedStoryDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D285A12D0122D700E4E33D /* MockedStoryDataService.swift */; };
 /* End PBXBuildFile section */
@@ -64,8 +62,6 @@
 		77CC28652CF8D61A007BC6FA /* ApplyDigitalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyDigitalApp.swift; sourceTree = "<group>"; };
 		77CC28662CF8D61A007BC6FA /* StoryFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryFeedView.swift; sourceTree = "<group>"; };
 		77CC286D2CF8D623007BC6FA /* ApplyDigitalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyDigitalTests.swift; sourceTree = "<group>"; };
-		77CC28702CF8D625007BC6FA /* ApplyDigitalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyDigitalUITests.swift; sourceTree = "<group>"; };
-		77CC28712CF8D625007BC6FA /* ApplyDigitalUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyDigitalUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		77D2859E2D01207100E4E33D /* StoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCellView.swift; sourceTree = "<group>"; };
 		77D285A12D0122D700E4E33D /* MockedStoryDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedStoryDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,7 +114,6 @@
 			children = (
 				77CC28672CF8D61A007BC6FA /* ApplyDigital */,
 				77CC286E2CF8D623007BC6FA /* ApplyDigitalTests */,
-				77CC28722CF8D625007BC6FA /* ApplyDigitalUITests */,
 				77CC282B2CF8CCC3007BC6FA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -200,15 +195,6 @@
 				77CC286D2CF8D623007BC6FA /* ApplyDigitalTests.swift */,
 			);
 			path = ApplyDigitalTests;
-			sourceTree = "<group>";
-		};
-		77CC28722CF8D625007BC6FA /* ApplyDigitalUITests */ = {
-			isa = PBXGroup;
-			children = (
-				77CC28702CF8D625007BC6FA /* ApplyDigitalUITests.swift */,
-				77CC28712CF8D625007BC6FA /* ApplyDigitalUITestsLaunchTests.swift */,
-			);
-			path = ApplyDigitalUITests;
 			sourceTree = "<group>";
 		};
 		77D285A02D0122D000E4E33D /* Mocks */ = {
@@ -408,8 +394,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77CC28732CF8D625007BC6FA /* ApplyDigitalUITests.swift in Sources */,
-				77CC28742CF8D625007BC6FA /* ApplyDigitalUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
