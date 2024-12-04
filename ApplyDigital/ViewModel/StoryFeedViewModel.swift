@@ -14,10 +14,16 @@ class StoryFeedViewModel {
 
     // MARK: - Properties
 
-    fileprivate(set) var isFetchingData = false
-    fileprivate(set) var error: Error?
+    private(set) var isFetchingData = false
+    private(set) var error: Error?
+
+    private let dataService: StoryDataService
 
     // MARK: - Methods
+
+    init(dataService: StoryDataService = AlgoliaService.shared) {
+        self.dataService = dataService
+    }
 
     @MainActor
     func fetchData(context: ModelContext, refreshing: Bool = false) async {
@@ -26,7 +32,7 @@ class StoryFeedViewModel {
         let endpoint = AlgoliaEndpoint.latestStories()
 
         do {
-            let searchResult: StoriesSearchResultDTO = try await AlgoliaService.shared.fetchData(from: endpoint)
+            let searchResult: StoriesSearchResultDTO = try await dataService.fetchData(from: endpoint)
 
             if refreshing {
                 try context.delete(model: Story.self, where: #Predicate { element in !element.isDeleted })
@@ -44,33 +50,6 @@ class StoryFeedViewModel {
 
     func clearError() {
         error = nil
-    }
-
-}
-
-class MockedStoryFeedViewModel: StoryFeedViewModel {
-
-    var fileName: String
-
-    init(fileName: String = "mocked_stories.json") {
-        self.fileName = fileName
-        super.init()
-    }
-
-    @MainActor
-    override func fetchData(context: ModelContext, refreshing: Bool = false) async {
-        isFetchingData = true
-
-        do {
-            let searchResult: StoriesSearchResultDTO = try parseJSON(from: fileName)
-            searchResult.stories.forEach { dto in
-                context.insertIfNotExisting(Story(from: dto))
-            }
-        } catch {
-            self.error = error
-        }
-
-        isFetchingData = false
     }
 
 }

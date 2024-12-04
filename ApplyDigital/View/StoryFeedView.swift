@@ -33,14 +33,7 @@ struct StoryFeedView: View {
         NavigationStack {
             List {
                 ForEach(stories) { story in
-                    NavigationLink(destination: destinationView(for: story)) {
-                        VStack(alignment: .leading, spacing: 10) {
-                            Text(story.title ?? "<untitled>")
-                                .font(.headline)
-                            Text(subHeadline(for: story))
-                                .font(.subheadline)
-                        }
-                    }
+                    StoryCellView(story: story)
                 }
                 .onDelete(perform: deleteStories)
             }
@@ -52,17 +45,7 @@ struct StoryFeedView: View {
                             Text("Fetching stories…")
                         }
                     } else {
-                        VStack(spacing: 16) {
-                            Text("No stories yet")
-                                .backgroundStyle(Color.red)
-                            Button("Try to fetch") {
-                                Task {
-                                    await viewModel.fetchData(context: modelContext, refreshing: true)
-                                }
-                            }
-                            .buttonStyle(.borderedProminent)
-                        }
-                        .padding()
+                        noStoriesView
                     }
                 }
             }
@@ -80,25 +63,21 @@ struct StoryFeedView: View {
         }
     }
 
-    // MARK: - Helper methods
-
-    private func subHeadline(for story: Story) -> String {
-        let author = story.author ?? "<no author>"
-
-        guard let date = story.createdAt else {
-            return author
+    var noStoriesView: some View {
+        VStack(spacing: 16) {
+            Text("No stories yet")
+                .backgroundStyle(Color.red)
+            Button("Try to fetch") {
+                Task {
+                    await viewModel.fetchData(context: modelContext, refreshing: true)
+                }
+            }
+            .buttonStyle(.borderedProminent)
         }
-
-        return author + " - \(timeText(for: date))"
+        .padding()
     }
 
-    private func timeText(for date: Date) -> String {
-        let formatter = RelativeDateTimeFormatter()
-        formatter.unitsStyle = .full
-        formatter.dateTimeStyle = .named
-
-        return formatter.localizedString(for: date, relativeTo: Date.now)
-    }
+    // MARK: - Helper methods
 
     private func alertErrorMessage(for error: Error?) -> String {
         guard let error else {
@@ -113,17 +92,6 @@ struct StoryFeedView: View {
             stories[index].delete()
             try? modelContext.save()
         }
-    }
-
-    private func destinationView(for story: Story) -> some View {
-        guard let url = story.url, let validURL = URL(string: url) else {
-            return AnyView(
-                Text("Could not load the story because the URL is invalid")
-                    .padding()
-            )
-        }
-
-        return AnyView(WebView(url: validURL))
     }
 
 }
@@ -143,17 +111,17 @@ let previewContainer: ModelContainer = {
 #Preview("Valid data") {
     StoryFeedView()
         .modelContainer(previewContainer)
-        .environment(MockedStoryFeedViewModel() as StoryFeedViewModel)
+        .environment(StoryFeedViewModel(dataService: MockedStoryDataService()))
 }
 
 #Preview("Empty") {
     StoryFeedView()
         .modelContainer(previewContainer)
-        .environment(MockedStoryFeedViewModel(fileName: "mocked_empty_stories.json") as StoryFeedViewModel)
+        .environment(StoryFeedViewModel(dataService: MockedStoryDataService(fileName: "mocked_empty_stories.json")))
 }
 
 #Preview("Error") {
     StoryFeedView()
         .modelContainer(previewContainer)
-        .environment(MockedStoryFeedViewModel(fileName: "invalid file name") as StoryFeedViewModel)
+        .environment(StoryFeedViewModel(dataService: MockedStoryDataService(fileName: "invalid file name")))
 }

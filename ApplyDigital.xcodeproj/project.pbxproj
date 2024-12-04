@@ -24,6 +24,8 @@
 		77CC286F2CF8D623007BC6FA /* ApplyDigitalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC286D2CF8D623007BC6FA /* ApplyDigitalTests.swift */; };
 		77CC28732CF8D625007BC6FA /* ApplyDigitalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC28702CF8D625007BC6FA /* ApplyDigitalUITests.swift */; };
 		77CC28742CF8D625007BC6FA /* ApplyDigitalUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77CC28712CF8D625007BC6FA /* ApplyDigitalUITestsLaunchTests.swift */; };
+		77D2859F2D01207100E4E33D /* StoryCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D2859E2D01207100E4E33D /* StoryCellView.swift */; };
+		77D285A22D0122D700E4E33D /* MockedStoryDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 77D285A12D0122D700E4E33D /* MockedStoryDataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		77CC286D2CF8D623007BC6FA /* ApplyDigitalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyDigitalTests.swift; sourceTree = "<group>"; };
 		77CC28702CF8D625007BC6FA /* ApplyDigitalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyDigitalUITests.swift; sourceTree = "<group>"; };
 		77CC28712CF8D625007BC6FA /* ApplyDigitalUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyDigitalUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		77D2859E2D01207100E4E33D /* StoryCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCellView.swift; sourceTree = "<group>"; };
+		77D285A12D0122D700E4E33D /* MockedStoryDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedStoryDataService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,6 +163,7 @@
 		77CC28632CF8D61A007BC6FA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				77D2859E2D01207100E4E33D /* StoryCellView.swift */,
 				77CC28662CF8D61A007BC6FA /* StoryFeedView.swift */,
 				775EE9F72CFEA98A000E6A44 /* WebView.swift */,
 			);
@@ -176,9 +181,10 @@
 		77CC28672CF8D61A007BC6FA /* ApplyDigital */ = {
 			isa = PBXGroup;
 			children = (
-				7706F8532CFE587F0023D7EA /* ModelContext+insertIfNotExisting.swift */,
 				77CC28652CF8D61A007BC6FA /* ApplyDigitalApp.swift */,
+				7706F8532CFE587F0023D7EA /* ModelContext+insertIfNotExisting.swift */,
 				7706F84C2CFE14FE0023D7EA /* Utils.swift */,
+				77D285A02D0122D000E4E33D /* Mocks */,
 				77CC285E2CF8D61A007BC6FA /* Model */,
 				7706F7B22CF9DCAD0023D7EA /* Network */,
 				77CC28622CF8D61A007BC6FA /* Resources */,
@@ -203,6 +209,14 @@
 				77CC28712CF8D625007BC6FA /* ApplyDigitalUITestsLaunchTests.swift */,
 			);
 			path = ApplyDigitalUITests;
+			sourceTree = "<group>";
+		};
+		77D285A02D0122D000E4E33D /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				77D285A12D0122D700E4E33D /* MockedStoryDataService.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -371,11 +385,13 @@
 				775EE9F82CFEA98B000E6A44 /* WebView.swift in Sources */,
 				7706F7B72CF9DCDC0023D7EA /* AlgoliaEndpoint.swift in Sources */,
 				7706F7B12CF9DC810023D7EA /* StoryFeedViewModel.swift in Sources */,
+				77D2859F2D01207100E4E33D /* StoryCellView.swift in Sources */,
 				7706F8542CFE589E0023D7EA /* ModelContext+insertIfNotExisting.swift in Sources */,
 				77CC286A2CF8D61A007BC6FA /* StoryDTO.swift in Sources */,
 				7706F7B52CF9DCC20023D7EA /* AlgoliaService.swift in Sources */,
 				77CC286B2CF8D61A007BC6FA /* ApplyDigitalApp.swift in Sources */,
 				77CC286C2CF8D61A007BC6FA /* StoryFeedView.swift in Sources */,
+				77D285A22D0122D700E4E33D /* MockedStoryDataService.swift in Sources */,
 				7706F84D2CFE15000023D7EA /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

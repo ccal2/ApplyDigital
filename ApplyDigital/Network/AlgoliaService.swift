@@ -7,6 +7,11 @@
 
 import Foundation
 
+protocol StoryDataService {
+    @MainActor
+    func fetchData<T: Codable>(from endpoint: AlgoliaEndpoint) async throws -> T
+}
+
 enum FetchError: Error {
     case badURL
     case invalidRequest
@@ -14,7 +19,7 @@ enum FetchError: Error {
     case failedToDecodeResponse
 }
 
-class AlgoliaService {
+class AlgoliaService: StoryDataService {
 
     // MARK: - Properties
 
@@ -25,7 +30,7 @@ class AlgoliaService {
 
     init() { }
 
-    func fetchData<T: Decodable>(from endpoint: AlgoliaEndpoint) async throws -> T {
+    func fetchData<T: Codable>(from endpoint: AlgoliaEndpoint) async throws -> T {
         guard var url = URL(string: endpoint.urlString) else {
             throw FetchError.badURL
         }
