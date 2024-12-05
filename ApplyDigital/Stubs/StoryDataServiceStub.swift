@@ -1,11 +1,11 @@
 //
-//  MockedStoryDataService.swift
+//  StoryDataServiceStub.swift
 //  ApplyDigital
 //
 //  Created by Carolina Lopes on 04/12/24.
 //
 
-class MockedStoryDataService: StoryDataService {
+class StoryDataServiceStub: StoryDataService {
 
     // MARK: - Properties
 
@@ -13,7 +13,7 @@ class MockedStoryDataService: StoryDataService {
 
     // MARK: - Methods
 
-    init(fileName: String = "mocked_stories.json") {
+    init(fileName: String = "stories_sample.json") {
         self.fileName = fileName
     }
 

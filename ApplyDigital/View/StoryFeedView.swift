@@ -111,17 +111,17 @@ let previewContainer: ModelContainer = {
 #Preview("Valid data") {
     StoryFeedView()
         .modelContainer(previewContainer)
-        .environment(StoryFeedViewModel(dataService: MockedStoryDataService()))
+        .environment(StoryFeedViewModel(dataService: StoryDataServiceStub()))
 }
 
 #Preview("Empty") {
     StoryFeedView()
         .modelContainer(previewContainer)
-        .environment(StoryFeedViewModel(dataService: MockedStoryDataService(fileName: "mocked_empty_stories.json")))
+        .environment(StoryFeedViewModel(dataService: StoryDataServiceStub(fileName: "empty_stories_sample.json")))
 }
 
 #Preview("Error") {
     StoryFeedView()
         .modelContainer(previewContainer)
-        .environment(StoryFeedViewModel(dataService: MockedStoryDataService(fileName: "invalid file name")))
+        .environment(StoryFeedViewModel(dataService: StoryDataServiceStub(fileName: "invalid file name")))
 }
