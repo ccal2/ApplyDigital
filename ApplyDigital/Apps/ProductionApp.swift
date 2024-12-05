@@ -1,15 +1,14 @@
 //
-//  ApplyDigitalApp.swift
+//  ProductionApp.swift
 //  ApplyDigital
 //
-//  Created by Carolina Lopes on 28/11/24.
+//  Created by Carolina Lopes on 05/12/24.
 //
 
 import SwiftData
 import SwiftUI
 
-@main
-struct ApplyDigitalApp: App {
+struct ProductionApp: App {
     var body: some Scene {
         WindowGroup {
             StoryFeedView()
