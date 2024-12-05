@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "2F8CFB1E-6FF9-4056-BB97-2BED63B979CF",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:ApplyDigital.xcodeproj",
+      "identifier" : "77CC28292CF8CCC3007BC6FA",
+      "name" : "ApplyDigital"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:ApplyDigital.xcodeproj",
+        "identifier" : "77CC28392CF8CCC7007BC6FA",
+        "name" : "ApplyDigitalTests"
+      }
+    }
+  ],
+  "version" : 1
+}
