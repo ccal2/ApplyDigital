@@ -13,11 +13,11 @@ extension ModelContext {
     func insertIfNotExisting(_ story: Story) {
         let storyID = story.id
 
-        let existingElement = try? fetch(FetchDescriptor<Story>(predicate: #Predicate<Story> { element in
+        let elementCount = try? fetchCount(FetchDescriptor<Story>(predicate: #Predicate<Story> { element in
             element.id == storyID
-        })).first
+        }))
 
-        guard existingElement == nil else {
+        guard elementCount ?? 0 == 0 else {
             return
         }
 
