@@ -9,11 +9,10 @@ import Foundation
 
 enum ParsingError: Error {
     case fileNotFound
-    case invalidDate
 }
 
-func parseJSON<T: Codable>(from fileName: String) throws -> T {
-    guard let fileURL = Bundle.main.url(forResource: fileName, withExtension: nil) else {
+func parseJSON<T: Codable>(from fileName: String, bundle: Bundle = Bundle.main) throws -> T {
+    guard let fileURL = bundle.url(forResource: fileName, withExtension: nil) else {
         throw ParsingError.fileNotFound
     }
 
