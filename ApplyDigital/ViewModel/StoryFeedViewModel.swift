@@ -26,7 +26,7 @@ class StoryFeedViewModel {
     }
 
     @MainActor
-    func fetchData(context: ModelContext, refreshing: Bool = false) async {
+    func fetchStories(with context: ModelContext, refreshing: Bool = true) async {
         isFetchingData = true
 
         let endpoint = AlgoliaEndpoint.latestStories()

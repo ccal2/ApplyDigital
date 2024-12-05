@@ -50,7 +50,7 @@ struct StoryFeedView: View {
                 }
             }
             .refreshable {
-                await viewModel.fetchData(context: modelContext, refreshing: true)
+                await viewModel.fetchStories(with: modelContext)
             }
         }
         .alert("Failed to fetch data", isPresented: showErrorAlert) {
@@ -59,7 +59,7 @@ struct StoryFeedView: View {
             Text("Try again later.")
         }
         .task {
-            await viewModel.fetchData(context: modelContext, refreshing: true)
+            await viewModel.fetchStories(with: modelContext)
         }
     }
 
@@ -69,7 +69,7 @@ struct StoryFeedView: View {
                 .backgroundStyle(Color.red)
             Button("Try to fetch") {
                 Task {
-                    await viewModel.fetchData(context: modelContext, refreshing: true)
+                    await viewModel.fetchStories(with: modelContext)
                 }
             }
             .buttonStyle(.borderedProminent)
