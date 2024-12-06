@@ -1,0 +1,41 @@
+:toc:
+
+=== ℹ️ Project general info
+
+iOS app that shows recently posted articles about Android or iOS on Hacker News.
+
+This is part of my job application for a role at Apply Digital.
+
+=== 📥 Installing dependencies
+
+This project uses SwiftLint. To install it, following the instructions from https://github.com/realm/SwiftLint[here].
+
+If you don't want to install it, you can go into the ApplyDigital's target on Xcode and either remove or comment out the `Run SwiftLint` Build Phase.
+
+=== 🗄️ Data API
+
+The data is fetched using the following API:
+
+----
+https://hn.algolia.com/api/v1/search_by_date?query=mobile
+----
+
+=== 💻 Development environment
+
+- **Xcode version:** 16.0
+- **Swift version:** 6.0
+- **Minimum iOS deployment target:** 17.6
+
+=== 📱 App screen recording
+
+ifdef::env-github[]
+image:https://raw.githubusercontent.com/ccal2/ApplyDigital/main/ApplyDigitalAppRecordingThumbnail.png[link=https://github.com/ccal2/ApplyDigital/blob/main/ApplyDigitalAppRecording.mov, width=350]
+endif::[]
+
+ifndef::env-github[]
+video::ApplyDigitalAppRecording.mov[width=350]
+endif::[]
+
+=== 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
