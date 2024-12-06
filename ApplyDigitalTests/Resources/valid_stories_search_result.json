@@ -1,0 +1,93 @@
+{
+    "exhaustiveNbHits": true,
+    "exhaustiveTypo": true,
+    "hits": [
+        {
+            "_highlightResult": {
+                "author": {
+                    "matchLevel": "none",
+                    "matchedWords": [],
+                    "value": "Cogito"
+                },
+                "title": {
+                    "matchLevel": "none",
+                    "matchedWords": [],
+                    "value": "Stephen Hawking has died"
+                },
+                "url": {
+                    "matchLevel": "none",
+                    "matchedWords": [],
+                    "value": "http://www.bbc.com/news/uk-43396008"
+                }
+            },
+            "_tags": [
+                "story",
+                "author_Cogito",
+                "story_16582136"
+            ],
+            "author": "Cogito",
+            "created_at": "2018-03-14T03:50:30Z",
+            "objectID": "16582136",
+            "title": "Stephen Hawking has died",
+            "url": "http://www.bbc.com/news/uk-43396008"
+        },
+        {
+            "author": "epaga",
+            "created_at": "2016-02-17T08:38:37Z",
+            "objectID": "11116274",
+            "title": "A Message to Our Customers",
+            "url": "http://www.apple.com/customer-letter/"
+        },
+        {
+            "author": "davidbarker",
+            "created_at": "2023-11-17T20:28:50Z",
+            "objectID": "38309611",
+            "title": "OpenAI’s board has fired Sam Altman",
+            "url": "https://openai.com/blog/openai-announces-leadership-transition"
+        },
+        {
+            "author": "rkta",
+            "created_at": "2024-03-29T16:16:50Z",
+            "objectID": "39865810",
+            "title": "Backdoor in upstream xz/liblzma leading to SSH server compromise",
+            "url": "https://www.openwall.com/lists/oss-security/2024/03/29/4"
+        },
+        {
+            "author": "BLKNSLVR",
+            "created_at": "2024-07-19T05:26:13Z",
+            "objectID": "41002195",
+            "story_title": "CrowdStrike Update: Windows Bluescreen and Boot Loops",
+            "url": "https://old.reddit.com/r/crowdstrike/comments/1e6vmkf/bsod_error_in_latest_crowdstrike_update/"
+        },
+        {
+            "author": "patricktomas",
+            "created_at": "2011-10-05T23:42:23Z",
+            "objectID": "3078128",
+            "title": "Steve Jobs has passed away.",
+            "url": "http://www.apple.com/stevejobs/"
+        },
+        {
+            "author": "wufocaculura",
+            "created_at": "2023-08-05T12:23:27Z",
+            "objectID": "37011324",
+            "title": "Bram Moolenaar has died",
+            "url": "https://groups.google.com/g/vim_announce/c/tWahca9zkt4"
+        },
+        {
+            "author": "todsacerdoti",
+            "created_at": "2022-05-04T15:06:41Z",
+            "objectID": "31261533",
+            "title": "Mechanical Watch",
+            "url": "https://ciechanow.ski/mechanical-watch/"
+        },
+        {
+            "author": "phantop",
+            "created_at": "2020-10-23T19:26:35Z",
+            "objectID": "24872911",
+            "title": "YouTube-dl has received a DMCA takedown from RIAA",
+            "url": "https://github.com/github/dmca/blob/master/2020/10/2020-10-23-RIAA.md"
+        }
+    ],
+    "nbPages": 1,
+    "page": 0
+}

@@ -38,6 +38,7 @@ class StoryFeedViewModel {
                 try context.delete(model: Story.self, where: #Predicate { element in !element.isDeleted })
                 try context.save()
             }
+
             searchResult.stories.forEach { dto in
                 context.insertIfNotExisting(Story(from: dto))
             }

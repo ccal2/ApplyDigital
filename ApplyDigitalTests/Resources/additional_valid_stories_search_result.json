@@ -1,0 +1,58 @@
+{
+    "exhaustiveNbHits": true,
+    "exhaustiveTypo": true,
+    "hits": [
+        {
+            "author": "grey-area",
+            "created_at": "2017-02-19T21:16:33Z",
+            "objectID": "13682022",
+            "title": "Reflecting on one very, very strange year at Uber",
+            "url": "https://www.susanjfowler.com/blog/2017/2/19/reflecting-on-one-very-strange-year-at-uber"
+        },
+        {
+            "author": "pdoconnell",
+            "created_at": "2021-04-05T14:04:22Z",
+            "objectID": "26699106",
+            "title": "Google’s copying of the Java SE API was fair use [pdf]",
+            "url": "https://www.supremecourt.gov/opinions/20pdf/18-956_d18f.pdf"
+        },
+        {
+            "_highlightResult": {
+                "author": {
+                    "matchLevel": "none",
+                    "matchedWords": [],
+                    "value": "e0m"
+                },
+                "title": {
+                    "matchLevel": "none",
+                    "matchedWords": [],
+                    "value": "GPT-4"
+                },
+                "url": {
+                    "matchLevel": "none",
+                    "matchedWords": [],
+                    "value": "https://openai.com/research/gpt-4"
+                }
+            },
+            "_tags": [
+                "story",
+                "author_e0m",
+                "story_35154527"
+            ],
+            "author": "e0m",
+            "created_at": "2023-03-14T16:55:34Z",
+            "objectID": "35154527",
+            "title": "GPT-4",
+            "url": "https://openai.com/research/gpt-4"
+        },
+        {
+            "author": "raxod502",
+            "created_at": "2021-06-07T16:08:04Z",
+            "objectID": "27424195",
+            "story_title": "Replit used legal threats to kill my open-source project",
+            "url": "https://intuitiveexplanations.com/tech/replit/"
+        }
+    ],
+    "nbPages": 1,
+    "page": 0
+}
