@@ -12,7 +12,7 @@ struct StoryFeedView: View {
 
     // MARK: - Properties
 
-    @Query(filter: #Predicate { element in !element.isDeleted },
+    @Query(filter: Story.Predicates.notDeleted,
            sort: \Story.createdAt,
            order: .reverse)
     var stories: [Story]
@@ -117,11 +117,13 @@ let previewContainer: ModelContainer = {
 #Preview("Empty") {
     StoryFeedView()
         .modelContainer(previewContainer)
-        .environment(StoryFeedViewModel(dataService: StoryDataServiceStub(fileName: "empty_stories_sample.json")))
+        .environment(StoryFeedViewModel(dataService: StoryDataServiceStub(
+            fileName: FileNameConstants.StoriesSearchResult.empty
+        )))
 }
 
 #Preview("Error") {
     StoryFeedView()
         .modelContainer(previewContainer)
-        .environment(StoryFeedViewModel(dataService: StoryDataServiceStub(fileName: "invalid file name")))
+        .environment(StoryFeedViewModel(dataService: StoryDataServiceStub(fileName: FileNameConstants.invalidName)))
 }

@@ -35,7 +35,7 @@ class StoryFeedViewModel {
             let searchResult: StoriesSearchResultDTO = try await dataService.fetchData(from: endpoint)
 
             if refreshing {
-                try context.delete(model: Story.self, where: #Predicate { element in !element.isDeleted })
+                try context.delete(model: Story.self, where: Story.Predicates.notDeleted)
                 try context.save()
             }
 

@@ -46,14 +46,16 @@ class Story {
 
 extension Story {
 
+    enum Predicates {
+        static let all = #Predicate<Story> { _ in true }
+        static let notDeleted = #Predicate<Story> { story in !story.isDeleted }
+        static let deleted = #Predicate<Story> { story in story.isDeleted }
+    }
+
     enum FetchDescriptors {
-        static let all = FetchDescriptor<Story>(predicate: #Predicate<Story> { _ in true })
-        static let notDeleted = FetchDescriptor<Story>(predicate: #Predicate<Story> { story in
-            !story.isDeleted
-        })
-        static let deleted = FetchDescriptor<Story>(predicate: #Predicate<Story> { story in
-            story.isDeleted
-        })
+        static let all = FetchDescriptor<Story>(predicate: Story.Predicates.all)
+        static let notDeleted = FetchDescriptor<Story>(predicate: Story.Predicates.notDeleted)
+        static let deleted = FetchDescriptor<Story>(predicate: Story.Predicates.deleted)
     }
 
 }
