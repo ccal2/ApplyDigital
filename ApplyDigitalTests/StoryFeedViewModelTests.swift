@@ -69,6 +69,8 @@ import Testing
 
         @Test("Fetch no stories when some are persisted should delete the persisted when refreshing")
         func noStories_somePersisted_refreshing_deleteFromContext() async throws {
+            // Seems to work when running the app, but the test is failing
+            // when trying to delete the initial stories from the context
             await withKnownIssue {
                 let dataService = StoryDataServiceStub(fileName: FileNameConstants.StoriesSearchResult.empty,
                                                        bundle: bundle)
